@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="my">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact — My Clothing Brand</title>
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <header class="header" id="header">
+    <div class="header__inner">
+      <a href="index.html" class="logo">
+        <span class="logo__icon">🧵</span>
+        <span>My Brand</span>
+      </a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="nav" id="nav">
+        <a href="index.html" class="nav__link">Home</a>
+        <a href="products.html" class="nav__link">Products</a>
+        <a href="gallery.html" class="nav__link">Gallery</a>
+        <a href="videos.html" class="nav__link">Videos</a>
+        <a href="about.html" class="nav__link">About</a>
+        <a href="contact.html" class="nav__link active">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-title">
+        <h2>ဆက်သွယ်ရန်</h2>
+        <p class="subtitle">မှာယူရန် သို့မဟုတ် မေးမြန်းရန်</p>
+      </div>
+
+      <div class="contact-grid">
+        <!-- Contact Info -->
+        <div class="contact-info">
+          <div class="contact-info__item">
+            <div class="contact-info__icon">📞</div>
+            <div class="contact-info__text">
+              <h4>ဖုန်း</h4>
+              <a href="tel:+959xxxxxxxxx">+95 9 XXX XXX XXX</a>
+            </div>
+          </div>
+
+          <div class="contact-info__item">
+            <div class="contact-info__icon">✉️</div>
+            <div class="contact-info__text">
+              <h4>Email</h4>
+              <a href="mailto:hello@yourbrand.com">hello@yourbrand.com</a>
+            </div>
+          </div>
+
+          <div class="contact-info__item">
+            <div class="contact-info__icon">💬</div>
+            <div class="contact-info__text">
+              <h4>Messenger</h4>
+              <a href="https://m.me/yourbrandpage" target="_blank" rel="noopener">
+                m.me/yourbrandpage
+              </a>
+            </div>
+          </div>
+
+          <div class="contact-info__item">
+            <div class="contact-info__icon">📍</div>
+            <div class="contact-info__text">
+              <h4>လိပ်စာ</h4>
+              <p>ရန်ကုန်မြို့၊ မြန်မာနိုင်ငံ</p>
+            </div>
+          </div>
+
+          <div class="contact-info__item">
+            <div class="contact-info__icon">⏰</div>
+            <div class="contact-info__text">
+              <h4>ဖွင့်ချိန်</h4>
+              <p>တနင်္လာ — စနေ: 9:00 AM — 6:00 PM</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact Form (Formspree) -->
+        <form
+          class="form"
+          id="contactForm"
+          action="https://formspree.io/f/YOUR_FORM_ID"
+          method="POST"
+        >
+          <div class="form-group">
+            <label class="form-label" for="name">အမည် *</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              class="form-input"
+              required
+              placeholder="သင့်အမည်"
+            >
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="email">Email *</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              class="form-input"
+              required
+              placeholder="you@example.com"
+            >
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="phone">ဖုန်းနံပါတ်</label>
+            <input
+              type="tel"
+              id="phone"
+              name="phone"
+              class="form-input"
+              placeholder="09XXXXXXXXX"
+            >
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="message">စာ *</label>
+            <textarea
+              id="message"
+              name="message"
+              class="form-textarea"
+              required
+              placeholder="သင့်မေးခွန်း သို့မဟုတ် မှာယူလိုသည့် အကြောင်းအရာ..."
+            ></textarea>
+          </div>
+
+          <button type="submit" class="btn btn--primary">စာ ပို့ရန်</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__bottom" style="border: none;">
+        © 2026 My Clothing Brand. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/contact.js"></script>
+</body>
+</html>

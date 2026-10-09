@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="my">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About — My Clothing Brand</title>
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <header class="header" id="header">
+    <div class="header__inner">
+      <a href="index.html" class="logo">
+        <span class="logo__icon">🧵</span>
+        <span>My Brand</span>
+      </a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="nav" id="nav">
+        <a href="index.html" class="nav__link">Home</a>
+        <a href="products.html" class="nav__link">Products</a>
+        <a href="gallery.html" class="nav__link">Gallery</a>
+        <a href="videos.html" class="nav__link">Videos</a>
+        <a href="about.html" class="nav__link active">About</a>
+        <a href="contact.html" class="nav__link">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="container-narrow text-center">
+      <h1 style="margin-bottom: var(--space-md);">ကျွန်ုပ်တို့၏ ဇာတ်လမ်း</h1>
+      <p style="font-size: var(--text-lg);">
+        ကိုယ်ပိုင်ဒီဇိုင်းဖြင့် လက်လုပ်ချုပ်လုပ်သော အထည်အမှတ်တံဆိပ်
+      </p>
+    </div>
+  </section>
+
+  <section class="section" style="background: var(--color-surface);">
+    <div class="container">
+      <div class="story">
+        <div class="story__image">
+          <img src="assets/images/team/workshop.jpg" alt="Workshop" loading="lazy">
+        </div>
+        <div class="story__content">
+          <h2>စတင်ခဲ့ပုံ</h2>
+          <p>
+            2024 ခုနှစ်မှာ ကိုယ်ပိုင်ဒီဇိုင်းနဲ့ အထည်တွေကို
+            ချုပ်လုပ်ပြီး မိတ်ဆွေတွေကို ရောင်းချရာက စတင်ခဲ့ပါတယ်။
+            အခုတော့ ပိုမိုကျယ်ပြန့်တဲ့ Customer တွေဆီ ရောက်ရှိနေပါပြီ။
+          </p>
+          <p>
+            ကျွန်ုပ်တို့ရဲ့ ရည်မှန်းချက်က — အရည်အသွေးမြင့် Material တွေနဲ့
+            ကိုယ်ပိုင်စတိုင်ကို ဖော်ပြနိုင်တဲ့ အထည်တွေကို
+            တတ်နိုင်တဲ့ ဈေးနှုန်းနဲ့ ရောင်းချပေးဖို့ပါ။
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-title">
+        <h2>တန်ဖိုးထားသော အရာများ</h2>
+      </div>
+
+      <div class="product-grid" style="grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));">
+        <div style="text-align: center; padding: var(--space-xl);">
+          <div style="font-size: 3rem; margin-bottom: var(--space-md);">✨</div>
+          <h3>အရည်အသွေး</h3>
+          <p>အရည်အသွေးမြင့် Material သာ အသုံးပြုပါသည်</p>
+        </div>
+        <div style="text-align: center; padding: var(--space-xl);">
+          <div style="font-size: 3rem; margin-bottom: var(--space-md);">🤝</div>
+          <h3>ယုံကြည်မှု</h3>
+          <p>Customer များနှင့် ရေရှည်ဆက်ဆံရေး တည်ဆောက်ပါသည်</p>
+        </div>
+        <div style="text-align: center; padding: var(--space-xl);">
+          <div style="font-size: 3rem; margin-bottom: var(--space-md);">🎨</div>
+          <h3>ဖန်တီးမှု</h3>
+          <p>မတူညီသော ဒီဇိုင်းအသစ်များ ဖန်တီးပါသည်</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__bottom" style="border: none;">
+        © 2026 My Clothing Brand. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="my">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Products — My Clothing Brand</title>
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <header class="header" id="header">
+    <div class="header__inner">
+      <a href="index.html" class="logo">
+        <span class="logo__icon">🧵</span>
+        <span>My Brand</span>
+      </a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="nav" id="nav">
+        <a href="index.html" class="nav__link">Home</a>
+        <a href="products.html" class="nav__link active">Products</a>
+        <a href="gallery.html" class="nav__link">Gallery</a>
+        <a href="videos.html" class="nav__link">Videos</a>
+        <a href="about.html" class="nav__link">About</a>
+        <a href="contact.html" class="nav__link">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-title">
+        <h2>ကျွန်ုပ်တို့၏ ထုတ်ကုန်များ</h2>
+        <p class="subtitle">လက်လုပ်ချုပ်လုပ်ထားသော အထည်များ</p>
+      </div>
+
+      <div class="filter-bar">
+        <button class="filter-btn active" data-filter="all">အားလုံး</button>
+        <button class="filter-btn" data-filter="men">အမျိုးသား</button>
+        <button class="filter-btn" data-filter="women">အမျိုးသမီး</button>
+        <button class="filter-btn" data-filter="kids">ကလေး</button>
+        <button class="filter-btn" data-filter="unisex">Unisex</button>
+        <button class="filter-btn" data-filter="accessories">အသုံးအဆောင်</button>
+      </div>
+
+      <div class="product-grid" id="allProducts">
+        <div class="loading">Loading products...</div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__bottom" style="border: none;">
+        © 2026 My Clothing Brand. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/products.js"></script>
+</body>
+</html>

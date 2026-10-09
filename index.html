@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="my">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ကိုယ်ပိုင်အထည်အမှတ်တံဆိပ် — လက်လုပ်အထည်များ၊ ကိုယ်ပိုင်ဒီဇိုင်းများ">
+  <meta name="keywords" content="clothing, fashion, myanmar, handmade, brand">
+  <meta property="og:title" content="My Clothing Brand">
+  <meta property="og:description" content="ကိုယ်ပိုင်ဒီဇိုင်းဖြင့် ချုပ်လုပ်ထားသော အထည်များ">
+  <meta property="og:type" content="website">
+
+  <title>My Clothing Brand — ကိုယ်ပိုင်အထည်အမှတ်တံဆိပ်</title>
+
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="icon" type="image/png" href="assets/images/logo/favicon.png">
+</head>
+<body>
+
+  <!-- ===== Header ===== -->
+  <header class="header" id="header">
+    <div class="header__inner">
+      <a href="index.html" class="logo">
+        <span class="logo__icon">🧵</span>
+        <span>My Brand</span>
+      </a>
+
+      <button class="menu-toggle" id="menuToggle" aria-label="Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav class="nav" id="nav">
+        <a href="index.html" class="nav__link active">Home</a>
+        <a href="products.html" class="nav__link">Products</a>
+        <a href="gallery.html" class="nav__link">Gallery</a>
+        <a href="videos.html" class="nav__link">Videos</a>
+        <a href="about.html" class="nav__link">About</a>
+        <a href="contact.html" class="nav__link">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===== Hero Section ===== -->
+  <section class="hero">
+    <div class="hero__content">
+      <h1 class="hero__title fade-in-up">
+        ကိုယ်ပိုင်ဒီဇိုင်း <span>အထည်များ</span>
+      </h1>
+      <p class="hero__subtitle fade-in-up fade-in-up-delay-1">
+        လက်လုပ်ချုပ်လုပ်ထားသော အထည်များ — သင့်ကိုယ်ပိုင် စတိုင်အတွက်
+      </p>
+      <div class="hero__actions fade-in-up fade-in-up-delay-2">
+        <a href="products.html" class="btn btn--gold">Collection ကြည့်ရန်</a>
+        <a href="contact.html" class="btn btn--outline" style="color:white; border-color:white;">ဆက်သွယ်ရန်</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Featured Products ===== -->
+  <section class="section">
+    <div class="container">
+      <div class="section-title">
+        <h2>ထင်ရှားသော ထုတ်ကုန်များ</h2>
+        <p class="subtitle">လက်ရှိ Collection မှ ရွေးချယ်ထားသော အထည်များ</p>
+      </div>
+
+      <div class="product-grid" id="featuredProducts">
+        <div class="loading">Loading products...</div>
+      </div>
+
+      <div class="text-center mt-xl">
+        <a href="products.html" class="btn btn--primary">အားလုံး ကြည့်ရန်</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Brand Story ===== -->
+  <section class="section" style="background: var(--color-surface);">
+    <div class="container">
+      <div class="story">
+        <div class="story__image">
+          <img src="assets/images/team/workshop.jpg" alt="Workshop" loading="lazy">
+        </div>
+        <div class="story__content">
+          <h2>ကျွန်ုပ်တို့၏ ဇာတ်လမ်း</h2>
+          <p>
+            ကျွန်ုပ်တို့သည် ကိုယ်ပိုင်ဒီဇိုင်းဖြင့် အထည်များကို
+            လက်ဖြင့် ချုပ်လုပ်သော အသေးစားလုပ်ငန်းတစ်ခု ဖြစ်ပါသည်။
+            အထည်တစ်ထည်ချင်းစီကို ဂရုတစိုက် ချုပ်လုပ်ပြီး
+            အရည်အသွေးမြင့်မားသော Material များကို အသုံးပြုပါသည်။
+          </p>
+          <p>
+            သင့်ကိုယ်ပိုင် စတိုင်ကို ဖော်ပြနိုင်သော အထည်များကို
+            ဖန်တီးပေးရန် ကျွန်ုပ်တို့ ရည်ရွယ်ပါသည်။
+          </p>
+          <a href="about.html" class="btn btn--outline mt-md">ပိုမိုဖတ်ရှုရန်</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Contact CTA ===== -->
+  <section class="section">
+    <div class="container-narrow text-center">
+      <div class="section-title">
+        <h2>မှာယူရန် ဆက်သွယ်ပါ</h2>
+        <p class="subtitle">အောက်ပါ လမ်းကြောင်းများမှ ဆက်သွယ်နိုင်ပါသည်</p>
+      </div>
+
+      <div class="hero__actions" style="justify-content: center;">
+        <a href="https://m.me/yourbrandpage" target="_blank" rel="noopener" class="btn btn--messenger">
+          💬 Messenger
+        </a>
+        <a href="viber://chat?number=%2B959xxxxxxxxx" class="btn btn--viber">
+          📞 Viber
+        </a>
+        <a href="tel:+959xxxxxxxxx" class="btn btn--phone">
+          ☎️ ဖုန်းဆက်ရန်
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Footer ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <div class="footer__brand">🧵 My Brand</div>
+          <p class="footer__desc">
+            ကိုယ်ပိုင်ဒီဇိုင်းဖြင့် လက်လုပ်ချုပ်လုပ်ထားသော အထည်များ။
+            အရည်အသွေးမြင့် Material များဖြင့် ဂရုတစိုက် ဖန်တီးပါသည်။
+          </p>
+          <div class="footer__social">
+            <a href="https://facebook.com/yourbrand" target="_blank" rel="noopener" aria-label="Facebook">📘</a>
+            <a href="https://instagram.com/yourbrand" target="_blank" rel="noopener" aria-label="Instagram">📷</a>
+            <a href="https://tiktok.com/@yourbrand" target="_blank" rel="noopener" aria-label="TikTok">🎵</a>
+            <a href="https://youtube.com/@yourbrand" target="_blank" rel="noopener" aria-label="YouTube">▶️</a>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="footer__title">Explore</h4>
+          <ul class="footer__links">
+            <li><a href="products.html">Products</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="videos.html">Videos</a></li>
+            <li><a href="about.html">About Us</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer__title">Contact</h4>
+          <ul class="footer__links">
+            <li><a href="tel:+959xxxxxxxxx">+95 9 XXX XXX XXX</a></li>
+            <li><a href="mailto:hello@yourbrand.com">hello@yourbrand.com</a></li>
+            <li><a href="https://m.me/yourbrandpage" target="_blank" rel="noopener">Messenger</a></li>
+            <li><a href="viber://chat?number=%2B959xxxxxxxxx">Viber</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer__bottom">
+        © 2026 My Clothing Brand. All rights reserved. Made with ❤️ in Myanmar.
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===== Scripts ===== -->
+  <script src="js/main.js"></script>
+  <script src="js/products.js"></script>
+</body>
+</html>

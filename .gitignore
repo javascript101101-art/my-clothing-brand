@@ -1,0 +1,24 @@
+# OS Files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# Logs
+*.log
+npm-debug.log*
+
+# Temporary
+*.tmp
+.cache/
+
+# Large Video Files (YouTube သုံးပါ)
+assets/videos/*.mp4
+assets/videos/*.mov
+
+# Backup Files
+*.bak
+*~
