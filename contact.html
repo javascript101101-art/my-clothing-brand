@@ -3,22 +3,29 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ဆက်သွယ်ရန် — My Clothing Brand">
   <title>Contact — My Clothing Brand</title>
+
   <link rel="stylesheet" href="css/variables.css">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/responsive.css">
 </head>
 <body>
 
+  <!-- ===== Header ===== -->
   <header class="header" id="header">
     <div class="header__inner">
       <a href="index.html" class="logo">
         <span class="logo__icon">🧵</span>
         <span>My Brand</span>
       </a>
+
       <button class="menu-toggle" id="menuToggle" aria-label="Menu">
-        <span></span><span></span><span></span>
+        <span></span>
+        <span></span>
+        <span></span>
       </button>
+
       <nav class="nav" id="nav">
         <a href="index.html" class="nav__link">Home</a>
         <a href="products.html" class="nav__link">Products</a>
@@ -30,6 +37,7 @@
     </div>
   </header>
 
+  <!-- ===== Contact Section ===== -->
   <section class="section">
     <div class="container">
       <div class="section-title">
@@ -38,7 +46,7 @@
       </div>
 
       <div class="contact-grid">
-        <!-- Contact Info -->
+        <!-- ===== Contact Info ===== -->
         <div class="contact-info">
           <div class="contact-info__item">
             <div class="contact-info__icon">📞</div>
@@ -81,15 +89,32 @@
               <p>တနင်္လာ — စနေ: 9:00 AM — 6:00 PM</p>
             </div>
           </div>
+
+          <div class="contact-info__item">
+            <div class="contact-info__icon">📘</div>
+            <div class="contact-info__text">
+              <h4>Facebook</h4>
+              <a href="https://facebook.com/yourbrandpage" target="_blank" rel="noopener">
+                facebook.com/yourbrandpage
+              </a>
+            </div>
+          </div>
         </div>
 
-        <!-- Contact Form (Formspree) -->
+        <!-- ===== Contact Form (Formspree) ===== -->
         <form
           class="form"
           id="contactForm"
-          action="https://formspree.io/f/YOUR_FORM_ID"
+          action="https://formspree.io/f/xgaoypza"
           method="POST"
+          novalidate
         >
+          <!-- ⭐ Honeypot Field — Bot များကို ကာကွယ်ရန် (User မမြင်ရ) -->
+          <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+
+          <!-- Email Subject (Formspree မှ လက်ခံမည့် Subject) -->
+          <input type="hidden" name="_subject" value="New Contact Message from Website">
+
           <div class="form-group">
             <label class="form-label" for="name">အမည် *</label>
             <input
@@ -99,6 +124,7 @@
               class="form-input"
               required
               placeholder="သင့်အမည်"
+              autocomplete="name"
             >
           </div>
 
@@ -111,6 +137,7 @@
               class="form-input"
               required
               placeholder="you@example.com"
+              autocomplete="email"
             >
           </div>
 
@@ -122,7 +149,18 @@
               name="phone"
               class="form-input"
               placeholder="09XXXXXXXXX"
+              autocomplete="tel"
             >
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="subject">ခေါင်းစဉ်</label>
+            <select id="subject" name="subject" class="form-input">
+              <option value="မှာယူလိုသည်">မှာယူလိုသည်</option>
+              <option value="မေးခွန်းရှိသည်">မေးခွန်းရှိသည်</option>
+              <option value="အထည်အရွယ်အစား မေးရန်">အထည်အရွယ်အစား မေးရန်</option>
+              <option value="အခြား">အခြား</option>
+            </select>
           </div>
 
           <div class="form-group">
@@ -136,12 +174,18 @@
             ></textarea>
           </div>
 
-          <button type="submit" class="btn btn--primary">စာ ပို့ရန်</button>
+          <button type="submit" class="btn btn--primary" id="submitBtn">
+            📩 စာ ပို့ရန်
+          </button>
+
+          <!-- Form Status Message (JS မှ ဖြည့်မည်) -->
+          <div id="formStatus" role="status" aria-live="polite"></div>
         </form>
       </div>
     </div>
   </section>
 
+  <!-- ===== Footer ===== -->
   <footer class="footer">
     <div class="container">
       <div class="footer__bottom" style="border: none;">
@@ -150,6 +194,7 @@
     </div>
   </footer>
 
+  <!-- ===== Scripts ===== -->
   <script src="js/main.js"></script>
   <script src="js/contact.js"></script>
 </body>

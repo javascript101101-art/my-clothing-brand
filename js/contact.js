@@ -1,23 +1,28 @@
 /* ============================================
-   Contact Form — Using Formspree (Free)
+   Contact Form — Formspree Integration
    ============================================ */
 
 document.addEventListener('DOMContentLoaded', () => {
   const form = document.getElementById('contactForm');
+  const statusEl = document.getElementById('formStatus');
+  const submitBtn = document.getElementById('submitBtn');
+
   if (!form) return;
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    const submitBtn = form.querySelector('button[type="submit"]');
+    // ===== Button Loading State =====
     const originalText = submitBtn.textContent;
-
-    // Loading State
-    submitBtn.textContent = 'ပို့နေသည်...';
+    submitBtn.textContent = '⏳ ပို့နေသည်...';
     submitBtn.disabled = true;
+
+    // ===== Status Message ရှင်းလင်း =====
+    statusEl.innerHTML = '';
 
     try {
       const formData = new FormData(form);
+
       const response = await fetch(form.action, {
         method: 'POST',
         body: formData,
@@ -25,31 +30,49 @@ document.addEventListener('DOMContentLoaded', () => {
       });
 
       if (response.ok) {
-        showMessage('✅ သင့်စာ ပို့ပြီးပါပြီ။ မကြာမီ ပြန်လည်ဆက်သွယ်ပါမည်။', 'success');
+        // ✅ အောင်မြင်သည်
+        showStatus('✅ သင့်စာ ပို့ပြီးပါပြီ။ မကြာမီ ပြန်လည်ဆက်သွယ်ပါမည်။', 'success');
         form.reset();
       } else {
-        throw new Error('Failed to send');
+        // ❌ Formspree Error
+        const data = await response.json();
+        const errMsg = data.errors
+          ? data.errors.map((err) => err.message).join(', ')
+          : 'ပို့၍ မရပါ';
+        showStatus(`❌ ${errMsg}`, 'error');
       }
     } catch (error) {
-      showMessage('❌ ပို့၍ မရပါ။ နောက်မှ ပြန်ကြိုးစားပါ။', 'error');
+      // ❌ Network Error
+      console.error('Contact form error:', error);
+      showStatus('❌ ကွန်ရက် ပြဿနာ ရှိပါသည်။ နောက်မှ ပြန်ကြိုးစားပါ။', 'error');
     } finally {
+      // ===== Button ပြန်လည် အသက်သွင်း =====
       submitBtn.textContent = originalText;
       submitBtn.disabled = false;
     }
   });
 
-  function showMessage(text, type) {
-    const msg = document.createElement('div');
-    msg.textContent = text;
-    msg.style.cssText = `
-      padding: 12px 20px;
+  /* ===== Status Message ပြသရန် Function ===== */
+  function showStatus(text, type) {
+    statusEl.textContent = text;
+    statusEl.style.cssText = `
+      padding: 14px 20px;
       border-radius: 8px;
-      margin-bottom: 16px;
+      margin-top: 16px;
       font-weight: 500;
+      font-size: 14px;
+      text-align: center;
       background: ${type === 'success' ? '#d1fae5' : '#fee2e2'};
       color: ${type === 'success' ? '#065f46' : '#991b1b'};
+      border: 1px solid ${type === 'success' ? '#6ee7b7' : '#fca5a5'};
     `;
-    form.insertBefore(msg, form.firstChild);
-    setTimeout(() => msg.remove(), 5000);
+
+    // ၇ စက္ကန့်အကြာမှာ Message ဖျက် (အောင်မြင်ရင်သာ)
+    if (type === 'success') {
+      setTimeout(() => {
+        statusEl.innerHTML = '';
+        statusEl.style.cssText = '';
+      }, 7000);
+    }
   }
 });
