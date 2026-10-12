@@ -56,7 +56,6 @@ async function initProductDetail() {
 
 /* ===== Query String မှ Product ID ယူခြင်း ===== */
 function getProductIdFromUrl() {
-  // URLSearchParams ဖြင့် Query String ကို Parse လုပ်ပါ
   const params = new URLSearchParams(window.location.search);
   return params.get('id');
 }
@@ -93,10 +92,10 @@ function renderError(container, title, message) {
 
 /* ===== Product အသေးစိတ် Render လုပ်ခြင်း ===== */
 function renderProductDetail(container, product) {
-  // Page Title ကို Update လုပ်ပါ
-  document.title = `${product.name} — My Clothing Brand`;
+  // ===== ၁။ Dynamic SEO Meta Tags Update =====
+  updateDynamicSEO(product);
 
-  // Size / Color Options များ ဖန်တီးပါ
+  // ===== ၂။ Size / Color Options များ ဖန်တီးပါ =====
   const sizesHTML = (product.sizes || [])
     .map(
       (size, i) =>
@@ -111,7 +110,7 @@ function renderProductDetail(container, product) {
     )
     .join('');
 
-  // Main HTML
+  // ===== ၃။ Main HTML =====
   container.innerHTML = `
     <!-- Breadcrumb -->
     <nav class="breadcrumb" aria-label="Breadcrumb">
@@ -130,21 +129,25 @@ function renderProductDetail(container, product) {
           <img
             id="mainImage"
             src="${escapeHTML(product.image)}"
-            alt="${escapeHTML(product.name)}"
+            alt="${escapeHTML(product.name)} — My Clothing Brand"
+            loading="eager"
             onerror="this.src='https://via.placeholder.com/600x800/f0f0f0/999?text=No+Image'"
           >
         </div>
         <div class="product-gallery__thumbs">
           <div class="product-gallery__thumb active">
-            <img src="${escapeHTML(product.image)}" alt="View 1"
+            <img src="${escapeHTML(product.image)}" alt="${escapeHTML(product.name)} — View 1"
+              loading="lazy"
               onerror="this.src='https://via.placeholder.com/100x100/f0f0f0/999?text=1'">
           </div>
           <div class="product-gallery__thumb">
-            <img src="${escapeHTML(product.image)}" alt="View 2"
+            <img src="${escapeHTML(product.image)}" alt="${escapeHTML(product.name)} — View 2"
+              loading="lazy"
               onerror="this.src='https://via.placeholder.com/100x100/f0f0f0/999?text=2'">
           </div>
           <div class="product-gallery__thumb">
-            <img src="${escapeHTML(product.image)}" alt="View 3"
+            <img src="${escapeHTML(product.image)}" alt="${escapeHTML(product.name)} — View 3"
+              loading="lazy"
               onerror="this.src='https://via.placeholder.com/100x100/f0f0f0/999?text=3'">
           </div>
         </div>
@@ -214,10 +217,140 @@ function renderProductDetail(container, product) {
     </div>
   `;
 
-  // Event Listeners များ ထည့်ပါ
+  // ===== ၄။ Event Listeners များ ထည့်ပါ =====
   attachOptionListeners();
   attachShareListener(product);
   attachThumbnailListeners();
+}
+
+/* ===== ⭐ Dynamic SEO Meta Tags Update ===== */
+function updateDynamicSEO(product) {
+  const BASE_URL = 'https://javascript101101-art.github.io/my-clothing-brand';
+  const fullImageUrl = `${BASE_URL}/${product.image}`;
+  const currentUrl = window.location.href;
+
+  // ===== ၁။ Title Update =====
+  document.title = `${product.name} — My Clothing Brand`;
+
+  // ===== ၂။ Meta Description =====
+  let metaDesc = document.querySelector('meta[name="description"]');
+  if (!metaDesc) {
+    metaDesc = document.createElement('meta');
+    metaDesc.setAttribute('name', 'description');
+    document.head.appendChild(metaDesc);
+  }
+  metaDesc.setAttribute('content',
+    product.description || `${product.name} — ${product.price} Ks | My Clothing Brand`
+  );
+
+  // ===== ၃။ Meta Keywords =====
+  let metaKeywords = document.querySelector('meta[name="keywords"]');
+  if (!metaKeywords) {
+    metaKeywords = document.createElement('meta');
+    metaKeywords.setAttribute('name', 'keywords');
+    document.head.appendChild(metaKeywords);
+  }
+  const keywords = [
+    product.name,
+    product.nameMy,
+    product.category,
+    'My Clothing Brand',
+    'မြန်မာအထည်',
+    'လက်လုပ်အထည်',
+  ].filter(Boolean).join(', ');
+  metaKeywords.setAttribute('content', keywords);
+
+  // ===== ၄။ Canonical URL Update =====
+  let canonical = document.querySelector('link[rel="canonical"]');
+  if (!canonical) {
+    canonical = document.createElement('link');
+    canonical.setAttribute('rel', 'canonical');
+    document.head.appendChild(canonical);
+  }
+  canonical.setAttribute('href', currentUrl);
+
+  // ===== ၅။ Open Graph Tags (Facebook) =====
+  const ogTags = {
+    'og:type': 'product',
+    'og:url': currentUrl,
+    'og:title': product.name,
+    'og:description': product.description || '',
+    'og:image': fullImageUrl,
+    'og:image:width': '800',
+    'og:image:height': '1067',
+    'og:site_name': 'My Clothing Brand',
+    'og:locale': 'my_MM',
+  };
+
+  Object.entries(ogTags).forEach(([property, content]) => {
+    let tag = document.querySelector(`meta[property="${property}"]`);
+    if (!tag) {
+      tag = document.createElement('meta');
+      tag.setAttribute('property', property);
+      document.head.appendChild(tag);
+    }
+    tag.setAttribute('content', content);
+  });
+
+  // ===== ၆။ Twitter Card Tags =====
+  const twitterTags = {
+    'twitter:card': 'summary_large_image',
+    'twitter:url': currentUrl,
+    'twitter:title': product.name,
+    'twitter:description': product.description || '',
+    'twitter:image': fullImageUrl,
+  };
+
+  Object.entries(twitterTags).forEach(([name, content]) => {
+    let tag = document.querySelector(`meta[name="${name}"]`);
+    if (!tag) {
+      tag = document.createElement('meta');
+      tag.setAttribute('name', name);
+      document.head.appendChild(tag);
+    }
+    tag.setAttribute('content', content);
+  });
+
+  // ===== ၇။ Product Structured Data (JSON-LD) =====
+  const productSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    name: product.name,
+    alternateName: product.nameMy || product.name,
+    image: [fullImageUrl],
+    description: product.description || '',
+    sku: `SKU-${product.id}`,
+    category: product.category || '',
+    brand: {
+      '@type': 'Brand',
+      name: 'My Clothing Brand',
+    },
+    offers: {
+      '@type': 'Offer',
+      url: currentUrl,
+      priceCurrency: 'MMK',
+      price: product.price,
+      availability: 'https://schema.org/InStock',
+      itemCondition: 'https://schema.org/NewCondition',
+      seller: {
+        '@type': 'Organization',
+        name: 'My Clothing Brand',
+      },
+    },
+  };
+
+  // ရှိပြီးသား Schema ရှိရင် ဖျက်
+  const existingSchema = document.getElementById('product-dynamic-schema');
+  if (existingSchema) existingSchema.remove();
+
+  // Schema အသစ် ထည့်
+  const schemaScript = document.createElement('script');
+  schemaScript.type = 'application/ld+json';
+  schemaScript.id = 'product-dynamic-schema';
+  schemaScript.textContent = JSON.stringify(productSchema);
+  document.head.appendChild(schemaScript);
+
+  console.log('✅ SEO updated for:', product.name);
 }
 
 /* ===== Size / Color Option Listeners ===== */
@@ -247,14 +380,32 @@ function attachShareListener(product) {
 
   shareBtn.addEventListener('click', async () => {
     const url = window.location.href;
+    const shareData = {
+      title: product.name,
+      text: `${product.name} — ${formatMMK(product.price)}`,
+      url: url,
+    };
 
+    // ===== Native Share API (Mobile) =====
+    if (navigator.share && /Android|iPhone|iPad/i.test(navigator.userAgent)) {
+      try {
+        await navigator.share(shareData);
+        return;
+      } catch (err) {
+        if (err.name === 'AbortError') return; // User က Cancel လုပ်လို့
+      }
+    }
+
+    // ===== Clipboard Copy (Desktop Fallback) =====
     try {
       await navigator.clipboard.writeText(url);
       showToast('✅ Link ကို Copy လုပ်ပြီးပါပြီ!');
     } catch (err) {
-      // Fallback — Clipboard API မရရင်
+      // Old Browser Fallback
       const textarea = document.createElement('textarea');
       textarea.value = url;
+      textarea.style.position = 'fixed';
+      textarea.style.opacity = '0';
       document.body.appendChild(textarea);
       textarea.select();
       document.execCommand('copy');
@@ -284,7 +435,12 @@ function attachThumbnailListeners() {
 
 /* ===== Toast Message ===== */
 function showToast(message) {
+  // ရှိပြီးသား Toast ရှိရင် ဖျက်
+  const existingToast = document.querySelector('.toast-message');
+  if (existingToast) existingToast.remove();
+
   const toast = document.createElement('div');
+  toast.className = 'toast-message';
   toast.textContent = message;
   toast.style.cssText = `
     position: fixed;
@@ -300,6 +456,8 @@ function showToast(message) {
     box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
     z-index: 9999;
     animation: fadeInUp 0.3s ease;
+    max-width: 90vw;
+    text-align: center;
   `;
 
   document.body.appendChild(toast);
@@ -313,6 +471,7 @@ function showToast(message) {
 
 /* ===== Utility: Escape HTML ===== */
 function escapeHTML(str) {
+  if (str === null || str === undefined) return '';
   const div = document.createElement('div');
   div.textContent = str;
   return div.innerHTML;

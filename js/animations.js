@@ -12,13 +12,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
 /* ===== 1. Scroll Reveal ===== */
 function initScrollReveal() {
-  // Observer တည်ဆောက်
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           entry.target.classList.add('active');
-          observer.unobserve(entry.target); // တစ်ကြိမ်သာ လုပ်ဆောင်
+          observer.unobserve(entry.target);
         }
       });
     },
@@ -28,7 +27,7 @@ function initScrollReveal() {
     }
   );
 
-  // Auto Reveal လိုချင်တဲ့ Selectors
+  // ===== Auto Reveal Selectors =====
   const autoRevealSelectors = [
     '.section-title',
     '.product-card',
@@ -36,6 +35,7 @@ function initScrollReveal() {
     '.story__content',
     '.contact-info__item',
     '.video-wrapper',
+    '.video-card',          // ⭐ ဒါကို ထည့်ပါ
     '.gallery-item',
     '.hero__content',
   ];
@@ -58,7 +58,7 @@ function initScrollReveal() {
   // ပထမဆုံး Run
   applyReveal();
 
-  // Dynamic Content (Product Cards စသည်) အတွက် Watch
+  // Dynamic Content (Product Cards, Video Cards စသည်) အတွက် Watch
   const mutationObserver = new MutationObserver(() => {
     applyReveal();
   });
@@ -78,7 +78,6 @@ function initBackToTop() {
   btn.setAttribute('title', 'အပေါ်သို့ ပြန်တက်');
   document.body.appendChild(btn);
 
-  // Scroll လုပ်ရင် ပြ/ဖျောက်
   let ticking = false;
   window.addEventListener('scroll', () => {
     if (!ticking) {
@@ -94,7 +93,6 @@ function initBackToTop() {
     }
   });
 
-  // Click လုပ်ရင် အပေါ်သို့ တက်
   btn.addEventListener('click', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
@@ -113,7 +111,6 @@ function initHeroParallax() {
         const scrolled = window.pageYOffset;
         const viewportHeight = window.innerHeight;
 
-        // Hero က Viewport ထဲ ရှိရင်သာ လုပ်ဆောင်
         if (scrolled < viewportHeight) {
           const translateY = scrolled * 0.35;
           const opacity = Math.max(0, 1 - scrolled / (viewportHeight * 0.9));
@@ -136,7 +133,6 @@ function initImageFadeIn() {
     img.classList.add('lazy-load');
 
     if (img.complete && img.naturalHeight !== 0) {
-      // Cache မှ ချက်ချင်း Load ဖြစ်သွားရင်
       img.classList.add('loaded');
     } else {
       img.addEventListener('load', () => img.classList.add('loaded'));

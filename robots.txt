@@ -1,0 +1,11 @@
+# robots.txt for My Clothing Brand
+
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://javascript101101-art.github.io/my-clothing-brand/sitemap.xml
+
+# Disallow
+Disallow: /admin/
+Disallow: /*.json$
